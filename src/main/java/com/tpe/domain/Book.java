@@ -22,15 +22,14 @@ import lombok.Setter;
 @Entity
 public class Book {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@JsonProperty("bookName")
-	private String name;
-	
-	@JsonIgnore
-	@ManyToOne
-	private Student student;
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @JsonProperty("bookName")
+    private String name;
+
+    @JsonIgnore
+    @ManyToOne
+    private Student student;
 }

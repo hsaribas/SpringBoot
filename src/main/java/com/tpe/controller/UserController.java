@@ -17,15 +17,14 @@ import com.tpe.service.UserService;
 @RestController
 public class UserController {
 
-	@Autowired
-	private UserService userService;
-	
-	@RequestMapping("/register")
-	@PostMapping
-	public ResponseEntity<MyResponse> register(@Valid @RequestBody UserRequest userRequest){
-		userService.saveUser(userRequest);
-		MyResponse  myResponse=new MyResponse("User registered successfully", true);
-        return new ResponseEntity<>(myResponse,HttpStatus.CREATED);		
-	}
-	
+    @Autowired
+    private UserService userService;
+
+    @RequestMapping("/register")
+    @PostMapping
+    public ResponseEntity<MyResponse> register(@Valid @RequestBody UserRequest userRequest) {
+        userService.saveUser(userRequest);
+        MyResponse myResponse = new MyResponse("User registered successfully", true);
+        return new ResponseEntity<>(myResponse, HttpStatus.CREATED);
+    }
 }

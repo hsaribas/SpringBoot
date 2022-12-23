@@ -22,11 +22,12 @@ import lombok.Setter;
 
 @Entity
 public class Role {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	@Enumerated(EnumType.STRING)
-	@Column(length=30,nullable = false)
-	private RoleType type;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Enumerated(EnumType.STRING)
+    @Column(length = 30, nullable = false)
+    private RoleType type;
 }

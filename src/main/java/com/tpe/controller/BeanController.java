@@ -15,28 +15,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class BeanController {
 
-	@Autowired
-	private ApplicationContext applicationContext;
-	
-	@RequestMapping("/beans")
-	@GetMapping
-	@PreAuthorize("hasRole('ADMIN')")
-	public Map<String,String> getBeans(){
-		
-		UserDetails userDetails= (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
-		System.out.println("Current UserName:"+userDetails.getUsername()+": password"+userDetails.getPassword()+
-				userDetails.getAuthorities());
-		
-		
-		
-		String[] beanNames= applicationContext.getBeanDefinitionNames();
-		Map<String,String> map=new HashMap<>();
-		
-		for (String beanName : beanNames) {
-			map.put(beanName, applicationContext.getBean(beanName).toString());
-		}
-		return map;
-	}
-	
+    @Autowired
+    private ApplicationContext applicationContext;
+
+    @RequestMapping("/beans")
+    @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public Map<String, String> getBeans() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        System.out.println("Current UserName:" + userDetails.getUsername() + ": password" + userDetails.getPassword() +
+                userDetails.getAuthorities());
+
+        String[] beanNames = applicationContext.getBeanDefinitionNames();
+        Map<String, String> map = new HashMap<>();
+
+        for (String beanName : beanNames) {
+            map.put(beanName, applicationContext.getBean(beanName).toString());
+        }
+        return map;
+    }
 }
