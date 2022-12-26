@@ -13,25 +13,22 @@ import com.tpe.domain.Student;
 import com.tpe.dto.StudentBookDTO;
 import com.tpe.dto.StudentDTO;
 
-@Mapper(componentModel="spring")
+@Mapper(componentModel = "spring")
 public interface StudentMapper {
-    
-	List<StudentDTO> mapToStudentDTO(List<Student> studentList);
-	
-	StudentDTO studentToStudentDTO(Student student);
-	
-	
-	List<StudentBookDTO> mapToStudentBookDTOs(List<Student> studentLis);
-	
-	@Mapping(source="books",target="books",qualifiedByName = "getBookNames")
-	StudentBookDTO studentToStudentBookDTO(Student student);
-	
-	
-	@Named("getBookNames")
-	public static List<String> getNames(List<Book> books){
-		List<String> bookNameList=new ArrayList<>();
-		bookNameList=books.stream().map(b->b.getName()).collect(Collectors.toList());
-		return bookNameList;
-	}
-	
+
+    List<StudentDTO> mapToStudentDTO(List<Student> studentList);
+
+    StudentDTO studentToStudentDTO(Student student);
+
+    List<StudentBookDTO> mapToStudentBookDTOs(List<Student> studentLis);
+
+    @Mapping(source = "books", target = "books", qualifiedByName = "getBookNames")
+    StudentBookDTO studentToStudentBookDTO(Student student);
+
+    @Named("getBookNames")
+    public static List<String> getNames(List<Book> books) {
+        List<String> bookNameList = new ArrayList<>();
+        bookNameList = books.stream().map(b -> b.getName()).collect(Collectors.toList());
+        return bookNameList;
+    }
 }

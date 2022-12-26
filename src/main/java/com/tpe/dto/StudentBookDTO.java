@@ -13,10 +13,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class StudentBookDTO {
 
-	private Long id;
-	private String firstName;
-	private String lastName;
-	
-	private List<String> books;
-	
+    private Long id;
+
+    private String firstName;
+
+    private String lastName;
+
+    private List<String> books;
 }
