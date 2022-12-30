@@ -11,7 +11,6 @@ import com.tpe.domain.MyUser;
 @Repository
 public interface UserRepository extends JpaRepository<MyUser, Long> {
 
-	@EntityGraph(attributePaths = "roles")
-	Optional<MyUser> findByUserName(String userName);
-	
+    @EntityGraph(attributePaths = "roles")
+    Optional<MyUser> findByUserName(String userName);
 }

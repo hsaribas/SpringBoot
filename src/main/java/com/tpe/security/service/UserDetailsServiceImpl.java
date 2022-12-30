@@ -19,26 +19,23 @@ import com.tpe.repository.UserRepository;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	@Autowired
-	private UserRepository userRepository;
-	
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		MyUser myUser= userRepository.findByUserName(username).orElseThrow(()->new UsernameNotFoundException("User not found:"+username));
-		//myUser->UserDetails
-		
-		return new User(myUser.getUserName(),myUser.getPassword(),buildGrantedAuthority(myUser.getRoles()));
-		
-	}
-	
-	private List<SimpleGrantedAuthority> buildGrantedAuthority(Set<Role> roles){
-		List<SimpleGrantedAuthority> authorities=new ArrayList<>();
-		
-		for(Role role:roles) {
-			authorities.add(new SimpleGrantedAuthority(role.getType().name()));
-		}
+    @Autowired
+    private UserRepository userRepository;
 
-		return authorities;
-	}
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        MyUser myUser = userRepository.findByUserName(username).orElseThrow(() -> new UsernameNotFoundException("User not found:" + username));
+        //myUser->UserDetails
 
+        return new User(myUser.getUserName(), myUser.getPassword(), buildGrantedAuthority(myUser.getRoles()));
+    }
+
+    private List<SimpleGrantedAuthority> buildGrantedAuthority(Set<Role> roles) {
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        for (Role role : roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getType().name()));
+        }
+        return authorities;
+    }
 }

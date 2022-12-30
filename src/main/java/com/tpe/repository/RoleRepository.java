@@ -11,6 +11,5 @@ import com.tpe.domain.enums.RoleType;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Integer> {
 
-	Optional<Role> findByType(RoleType type);
-	
+    Optional<Role> findByType(RoleType type);
 }
